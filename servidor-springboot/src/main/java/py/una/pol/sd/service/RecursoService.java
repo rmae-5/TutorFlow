@@ -29,8 +29,8 @@ public class RecursoService {
     public Optional<Recurso> actualizar(Long id, Recurso recursoActualizado) {
         return repo.findById(id).map(recurso -> {
             recurso.setTitulo(recursoActualizado.getTitulo());
-            recurso.setDescripcion(recursoActualizada.getDescripcion());
-            recurso.setMateria(recursoActualizada.getMateria());
+            recurso.setDescripcion(recursoActualizado.getDescripcion());
+            recurso.setMateria(recursoActualizado.getMateria());
             return repo.save(recurso);
         });
     }
