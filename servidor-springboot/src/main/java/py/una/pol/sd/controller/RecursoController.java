@@ -6,7 +6,7 @@ import py.una.pol.sd.service.RecursoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/recursos")
+@RequestMapping("/recursos")
 public class RecursoController {
 
     private final RecursoService service;

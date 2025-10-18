@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/tareas")
+@RequestMapping("/tareas")
 public class TareaController {
 
     private final TareaService service;

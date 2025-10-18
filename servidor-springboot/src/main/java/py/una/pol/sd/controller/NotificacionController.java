@@ -6,7 +6,7 @@ import py.una.pol.sd.service.NotificacionService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/notificaciones")
+@RequestMapping("/notificaciones")
 public class NotificacionController {
 
     private final NotificacionService service;
