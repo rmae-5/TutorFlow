@@ -21,6 +21,29 @@ Gestiona las notificaciones de los usuarios.
         *   `200 OK`: Lista de objetos `Notificacion` para el usuario especificado.
         *   `404 Not Found`: Si no se encuentran notificaciones para el usuario.
 
+*   **`POST /notificaciones`**
+    *   **Descripción:** Crea una nueva notificación.
+    *   **Cuerpo de la Solicitud:** Objeto `Notificacion` (sin `id`).
+    *   **Respuestas:**
+        *   `200 OK`: La `Notificacion` creada.
+
+*   **`PUT /notificaciones/{id}`**
+    *   **Descripción:** Actualiza una notificación existente.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID de la notificación a actualizar.
+    *   **Cuerpo de la Solicitud:** Objeto `Notificacion` con los datos actualizados.
+    *   **Respuestas:**
+        *   `200 OK`: La `Notificacion` actualizada.
+        *   `404 Not Found`: Si la notificación no se encuentra.
+
+*   **`DELETE /notificaciones/{id}`**
+    *   **Descripción:** Elimina una notificación por su ID.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID de la notificación a eliminar.
+    *   **Respuestas:**
+        *   `204 No Content`: Si la notificación fue eliminada exitosamente.
+        *   `404 Not Found`: Si la notificación no se encuentra.
+
 ### Recursos
 
 Gestiona los recursos educativos.
@@ -31,6 +54,29 @@ Gestiona los recursos educativos.
         *   `materia` (String): Filtra los recursos por el nombre de la materia.
     *   **Respuestas:**
         *   `200 OK`: Lista de objetos `Recurso`.
+
+*   **`POST /recursos`**
+    *   **Descripción:** Crea un nuevo recurso.
+    *   **Cuerpo de la Solicitud:** Objeto `Recurso` (sin `id`).
+    *   **Respuestas:**
+        *   `200 OK`: El `Recurso` creado.
+
+*   **`PUT /recursos/{id}`**
+    *   **Descripción:** Actualiza un recurso existente.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID del recurso a actualizar.
+    *   **Cuerpo de la Solicitud:** Objeto `Recurso` con los datos actualizados.
+    *   **Respuestas:**
+        *   `200 OK`: El `Recurso` actualizado.
+        *   `404 Not Found`: Si el recurso no se encuentra.
+
+*   **`DELETE /recursos/{id}`**
+    *   **Descripción:** Elimina un recurso por su ID.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID del recurso a eliminar.
+    *   **Respuestas:**
+        *   `204 No Content`: Si el recurso fue eliminado exitosamente.
+        *   `404 Not Found`: Si el recurso no se encuentra.
 
 ### Tareas
 
@@ -47,6 +93,29 @@ Gestiona las tareas asignadas.
         *   `idTarea` (Long): El ID de la tarea.
     *   **Respuestas:**
         *   `200 OK`: Objeto `Tarea` si se encuentra.
+        *   `404 Not Found`: Si la tarea no se encuentra.
+
+*   **`POST /tareas`**
+    *   **Descripción:** Crea una nueva tarea.
+    *   **Cuerpo de la Solicitud:** Objeto `Tarea` (sin `id`).
+    *   **Respuestas:**
+        *   `200 OK`: La `Tarea` creada.
+
+*   **`PUT /tareas/{id}`**
+    *   **Descripción:** Actualiza una tarea existente.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID de la tarea a actualizar.
+    *   **Cuerpo de la Solicitud:** Objeto `Tarea` con los datos actualizados.
+    *   **Respuestas:**
+        *   `200 OK`: La `Tarea` actualizada.
+        *   `404 Not Found`: Si la tarea no se encuentra.
+
+*   **`DELETE /tareas/{id}`**
+    *   **Descripción:** Elimina una tarea por su ID.
+    *   **Parámetros de Ruta:**
+        *   `id` (Long): El ID de la tarea a eliminar.
+    *   **Respuestas:**
+        *   `204 No Content`: Si la tarea fue eliminada exitosamente.
         *   `404 Not Found`: Si la tarea no se encuentra.
 
 ## Modelos de Datos
