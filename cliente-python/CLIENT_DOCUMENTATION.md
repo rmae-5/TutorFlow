@@ -1,74 +1,132 @@
 # Documentación del Cliente Python de TutorFlow
 
-Este documento describe el script `clienteTutorFlow.py`, un cliente de línea de comandos para interactuar con la API REST del servidor TutorFlow.
+Este documento describe el script clienteTutorFlow.py, un cliente de línea de comandos para interactuar con la API REST del servidor TutorFlow.
 
 ## Introducción
 
-`clienteTutorFlow.py` es un script Python que permite a los usuarios realizar diversas operaciones en la API de TutorFlow, como listar notificaciones, recursos y tareas. Proporciona una interfaz de menú interactiva para facilitar su uso.
+clienteTutorFlow.py es un script Python que permite a los usuarios realizar diversas operaciones en la API de TutorFlow, como listar, crear, actualizar y eliminar notificaciones, recursos y tareas. Proporciona una interfaz de menú interactiva para facilitar su uso.
 
 ## Configuración
 
-La URL base de la API se define en la variable `API_BASE_URL` dentro del script. Si el servidor Spring Boot se ejecuta en un puerto diferente o en una dirección IP distinta, deberás ajustar esta variable en el archivo `clienteTutorFlow.py` (aunque la solicitud es no tocar ningún archivo, esto es solo para información del usuario si necesita cambiarlo).
+La URL base de la API se define en la variable API_BASE_URL dentro del script. Si el servidor Spring Boot se ejecuta en un puerto diferente o en una dirección IP distinta, deberás ajustar esta variable.
 
-```python
+python
 API_BASE_URL = "http://localhost:8100/api"  # Cambia el puerto si es necesario
-```
+
 
 ## Funciones Disponibles
 
 El cliente Python implementa las siguientes funciones para interactuar con la API:
 
-### `listar_notificaciones()`
+### listar_notificaciones()
 
-*   **Descripción:** Realiza una solicitud GET a `/notificaciones` para obtener todas las notificaciones disponibles en el sistema.
-*   **Uso:** Selecciona la opción "1. Listar todas las notificaciones" en el menú.
+*   *Descripción:* Obtiene todas las notificaciones.
+*   *Uso:* Opción "1. Listar todas las notificaciones".
 
-### `listar_notificaciones_usuario(id_usuario)`
+### listar_notificaciones_usuario(id_usuario)
 
-*   **Descripción:** Realiza una solicitud GET a `/notificaciones/{idUsuario}` para obtener las notificaciones de un usuario específico.
-*   **Parámetros:**
-    *   `id_usuario` (String): El identificador único del usuario.
-*   **Uso:** Selecciona la opción "2. Listar notificaciones por usuario" en el menú y proporciona el ID de usuario cuando se solicite.
+*   *Descripción:* Obtiene las notificaciones de un usuario específico.
+*   *Parámetros:* id_usuario (String).
+*   *Uso:* Opción "2. Listar notificaciones por usuario".
 
-### `listar_recursos(materia=None)`
+### listar_recursos(materia=None)
 
-*   **Descripción:** Realiza una solicitud GET a `/recursos` para obtener todos los recursos académicos. Opcionalmente, puede filtrar los recursos por materia.
-*   **Parámetros:**
-    *   `materia` (String, opcional): El nombre de la materia por la que se desea filtrar los recursos. Si no se proporciona, se listarán todos los recursos.
-*   **Uso:** Selecciona la opción "3. Listar recursos académicos" en el menú. Se te preguntará si deseas filtrar por materia.
+*   *Descripción:* Obtiene todos los recursos, con filtro opcional por materia.
+*   *Parámetros:* materia (String, opcional).
+*   *Uso:* Opción "3. Listar recursos académicos".
 
-### `listar_tareas()`
+### listar_tareas()
 
-*   **Descripción:** Realiza una solicitud GET a `/tareas` para obtener una lista de todas las tareas disponibles.
-*   **Uso:** Selecciona la opción "4. Listar tareas" en el menú.
+*   *Descripción:* Obtiene todas las tareas.
+*   *Uso:* Opción "4. Listar tareas".
 
-### `obtener_tarea(id_tarea)`
+### obtener_tarea(id_tarea)
 
-*   **Descripción:** Realiza una solicitud GET a `/tareas/{idTarea}` para obtener los detalles de una tarea específica.
-*   **Parámetros:**
-    *   `id_tarea` (String): El identificador único de la tarea.
-*   **Uso:** Selecciona la opción "5. Consultar tarea por ID" en el menú y proporciona el ID de la tarea cuando se solicite.
+*   *Descripción:* Obtiene una tarea por su ID.
+*   *Parámetros:* id_tarea (String).
+*   *Uso:* Opción "5. Consultar tarea por ID".
+
+### crear_notificacion(id_usuario, mensaje, fecha_iso=None)
+
+*   *Descripción:* Crea una nueva notificación.
+*   *Parámetros:* id_usuario (int), mensaje (str), fecha_iso (str, opcional).
+*   *Uso:* Opción "6. Crear notificación".
+
+### actualizar_notificacion(id_notificacion, ...)
+
+*   *Descripción:* Actualiza una notificación existente.
+*   *Parámetros:* id_notificacion (int) y campos opcionales.
+*   *Uso:* Opción "7. Actualizar notificación".
+
+### eliminar_notificacion(id_notificacion)
+
+*   *Descripción:* Elimina una notificación.
+*   *Parámetros:* id_notificacion (int).
+*   *Uso:* Opción "8. Eliminar notificación".
+
+### crear_recurso(titulo, descripcion, materia)
+
+*   *Descripción:* Crea un nuevo recurso.
+*   *Parámetros:* titulo (str), descripcion (str), materia (str).
+*   *Uso:* Opción "9. Crear recurso".
+
+### actualizar_recurso(id_recurso, ...)
+
+*   *Descripción:* Actualiza un recurso existente.
+*   *Parámetros:* id_recurso (int) y campos opcionales.
+*   *Uso:* Opción "10. Actualizar recurso".
+
+### eliminar_recurso(id_recurso)
+
+*   *Descripción:* Elimina un recurso.
+*   *Parámetros:* id_recurso (int).
+*   *Uso:* Opción "11. Eliminar recurso".
+
+### crear_tarea(titulo, descripcion, fecha_entrega_iso)
+
+*   *Descripción:* Crea una nueva tarea.
+*   *Parámetros:* titulo (str), descripcion (str), fecha_entrega_iso (str).
+*   *Uso:* Opción "12. Crear tarea".
+
+### actualizar_tarea(id_tarea, ...)
+
+*   *Descripción:* Actualiza una tarea existente.
+*   *Parámetros:* id_tarea (int) y campos opcionales.
+*   *Uso:* Opción "13. Actualizar tarea".
+
+### eliminar_tarea(id_tarea)
+
+*   *Descripción:* Elimina una tarea.
+*   *Parámetros:* id_tarea (int).
+*   *Uso:* Opción "14. Eliminar tarea".
 
 ## Uso del Cliente (Menú Interactivo)
 
-Al ejecutar el script, se presentará un menú interactivo en la consola:
+Al ejecutar el script, se presentará el siguiente menú:
 
-```
+
 ========== CLIENTE TUTORFLOW ==========
 1. Listar todas las notificaciones
 2. Listar notificaciones por usuario
 3. Listar recursos académicos
 4. Listar tareas
 5. Consultar tarea por ID
+6. Crear notificación
+7. Actualizar notificación
+8. Eliminar notificación
+9. Crear recurso
+10. Actualizar recurso
+11. Eliminar recurso
+12. Crear tarea
+13. Actualizar tarea
+14. Eliminar tarea
 0. Salir
 Seleccione una opción:
-```
 
-Ingresa el número correspondiente a la opción deseada y presiona Enter. Sigue las instrucciones en pantalla para proporcionar cualquier parámetro requerido.
 
 ## Cómo Ejecutar
 
-Para ejecutar el cliente Python, asegúrate de tener Python instalado en tu sistema. Luego, navega hasta el directorio `TutorFlow/cliente-python/` en tu terminal y ejecuta el siguiente comando:
+Navega hasta el directorio TutorFlow/cliente-python/ y ejecuta:
 
 ```bash
 python clienteTutorFlow.py
