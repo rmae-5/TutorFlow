@@ -21,4 +21,21 @@ public class TareaService {
     public Optional<Tarea> porId(Long idTarea) {
         return repo.findById(idTarea);
     }
+
+    public Tarea guardar(Tarea tarea) {
+        return repo.save(tarea);
+    }
+
+    public Optional<Tarea> actualizar(Long id, Tarea tareaActualizada) {
+        return repo.findById(id).map(tarea -> {
+            tarea.setTitulo(tareaActualizada.getTitulo());
+            tarea.setDescripcion(tareaActualizada.getDescripcion());
+            tarea.setFechaEntrega(tareaActualizada.getFechaEntrega());
+            return repo.save(tarea);
+        });
+    }
+
+    public void eliminar(Long id) {
+        repo.deleteById(id);
+    }
 }
